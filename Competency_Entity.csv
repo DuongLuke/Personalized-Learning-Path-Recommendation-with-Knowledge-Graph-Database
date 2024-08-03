@@ -1,0 +1,50 @@
+﻿Competency_id,Competency_Category,Competency_Name
+CPT_1,Grammar,Grammar for level A1
+CPT_2,Grammar,Grammar for level A2
+CPT_3,Grammar,Grammar for level B1
+CPT_4,Grammar,Grammar for level B2
+CPT_5,Listening,Listening Test in TOEIC for Level 110-270
+CPT_6,Listening,Listening Test in TOEIC for Level 275-395
+CPT_7,Listening,Listening Test in TOEIC for Level 400-485
+CPT_8,Listening,Listening Test in TOEIC for Level 490-495
+CPT_9,Reading,Reading Test in TOEIC for Level 115-270
+CPT_10,Reading,Reading Test in TOEIC for Level 275-380
+CPT_11,Reading,Reading Test in TOEIC for Level 385-450
+CPT_12,Reading,Reading Test in TOEIC for Level 455-495
+CPT_13,Speaking,Speaking Test in TOEIC for Level 90 - 115
+CPT_14,Speaking,Speaking Test in TOEIC for Level 120 - 155
+CPT_15,Speaking,Speaking Test in TOEIC for Level 160 - 175
+CPT_16,Speaking,Speaking Test in TOEIC for Level 180 - 200
+CPT_17,Writing,Writing Test in TOEIC for Level 70 - 115
+CPT_18,Writing,Writing Test in TOEIC for Level 120 - 145
+CPT_19,Writing,Writing Test in TOEIC for Level 150-175
+CPT_20,Writing,Writing Test in TOEIC for Level 180-200
+CPT_21,Listening,Listening Test in IELTS for Level 4.0-5.0
+CPT_22,Listening,Listening Test in IELTS for Level 5.5-6.5
+CPT_23,Listening,Listening Test in IELTS for Level 7.0 - 8.0
+CPT_24,Listening,Listening Test in IELTS for Level 8.0 - 9.0
+CPT_25,Reading,Reading Test in IELTS for Level 4.0-5.0
+CPT_26,Reading,Reading Test in IELTS for Level 5.5-6.5
+CPT_27,Reading,Reading Test in IELTS for Level 7.0 - 8.0
+CPT_28,Reading,Reading Test in IELTS for Level 8.0 - 9.0
+CPT_29,Speaking,Speaking Test in IELTS for Level 4.0-5.0
+CPT_30,Speaking,Speaking Test in IELTS for Level 5.5-6.5
+CPT_31,Speaking,Speaking Test in IELTS for Level 7.0 - 8.0
+CPT_32,Speaking,Speaking Test in IELTS for Level 8.0 - 9.0
+CPT_33,Writing,Writing Test in IELTS for Level 4.0-5.0
+CPT_34,Writing,Writing Test in IELTS for Level 5.5-6.5
+CPT_35,Writing,Writing Test in IELTS for Level 7.0 - 8.0
+CPT_36,Writing,Writing Test in IELTS for Level 8.0 - 9.0
+CPT_37,Listening,Listening Test in TOEFL for Level 9 - 16
+CPT_38,Listening,Listening Test in TOEFL for Level 17 - 21
+CPT_39,Listening,Listening Test in TOEFL for Level 22 - 27
+CPT_40,Listening,Listening Test in TOEFL for Level 28 - 30
+CPT_41,Reading,Reading Test in TOEFL for Level 4 - 17
+CPT_42,Reading,Reading Test in IELTS for Level 18 - 23
+CPT_43,Reading,Reading Test in IELTS for Level 24 - 30
+CPT_44,Speaking,Speaking Test in TOEFL for Level 10 - 15
+CPT_45,Speaking,Speaking Test in TOEFL for Level 16 - 19
+CPT_46,Speaking,Speaking Test in TOEFL for Level 20 - 25
+CPT_47,Speaking,Speaking Test in TOEFL for Level 26 - 30
+CPT_48,Writing,Writing Test in IELTS for Level 13 - 16
+CPT_49,Writing,Writing Test in IELTS for Level 17 - 30

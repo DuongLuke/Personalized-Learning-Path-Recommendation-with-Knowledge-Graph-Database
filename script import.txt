@@ -1,0 +1,229 @@
+LOAD CSV WITH HEADERS FROM 'file:///Competency_Entity.csv' AS row
+CREATE (l:Competency {
+    Competency_id:row.Competency_id,
+    Competency_Name: row.Competency_Name,
+    Competency_Category:row.Competency_Category,
+    Date_update: datetime()
+})
+----------------
+LOAD CSV WITH HEADERS FROM 'file:///Grammar.csv' AS row
+CREATE (l:Grammar {
+    Lesson_ID:row.Lesson_ID,
+    Lesson: row.Lesson,
+    Theory_References:row.Theory_References,
+    Exercise:row.Exercise,
+    Time_to_learn_in_day: toInteger(row.Time_to_learn),
+	Category :row.Category,
+    Date_update: datetime()
+})
+----------------
+LOAD CSV WITH HEADERS FROM 'file:///Vocabulary.csv' AS row
+CREATE (l:Vocabulary {
+    Lesson_ID:row.Lesson_ID,
+    Lesson: row.Lesson,
+    Theory_References:row.Theory_References,
+    Exercise:row.Exercise,
+    Time_to_learn_in_day: toInteger(row.Time_to_learn),
+Category :row.Category,
+    Date_update: datetime()
+})
+----------------
+LOAD CSV WITH HEADERS FROM 'file:///Listening_Skill.csv' AS row
+CREATE (l:Listening_Skill {
+    Lesson_ID:row.Lesson_ID,
+    Lesson: row.Lesson,
+    Theory_References:row.Theory_References,
+    Exercise:row.Exercise,
+    Time_to_learn_in_day: toInteger(row.Time_to_learn),
+Category :row.Category,
+    Date_update: datetime()
+})
+----------------
+LOAD CSV WITH HEADERS FROM 'file:///Reading_Skill.csv' AS row
+CREATE (l:Reading_Skill {
+    Lesson_ID:row.Lesson_ID,
+    Lesson: row.Lesson,
+    Theory_References:row.Theory_References,
+    Exercise:row.Exercise,
+    Time_to_learn_in_day: toInteger(row.Time_to_learn),
+Category :row.Category,
+    Date_update: datetime()
+})
+----------------
+LOAD CSV WITH HEADERS FROM 'file:///Speaking_Skill.csv' AS row
+CREATE (l:Speaking_Skill {
+    Lesson_ID:row.Lesson_ID,
+    Lesson: row.Lesson,
+    Theory_References:row.Theory_References,
+    Exercise:row.Exercise,
+    Time_to_learn_in_day: toInteger(row.Time_to_learn),
+Category :row.Category,
+    Date_update: datetime()
+})
+----------------
+LOAD CSV WITH HEADERS FROM 'file:///Writing_Skill.csv' AS row
+CREATE (l:Writing_Skill {
+    Lesson_ID:row.Lesson_ID,
+    Lesson: row.Lesson,
+    Theory_References:row.Theory_References,
+    Exercise:row.Exercise,
+    Time_to_learn_in_day: toInteger(row.Time_to_learn),
+Category :row.Category,
+    Date_update: datetime()
+})
+
+----------------
+----------------
+LOAD CSV WITH HEADERS FROM 'file:///Pronunciation.csv' AS row
+CREATE (l:Pronunciation {
+    Lesson_ID:row.Lesson_ID,
+    Lesson: row.Lesson,
+    Theory_References:row.Theory_References,
+    Exercise:row.Exercise,
+    Time_to_learn_in_day: toInteger(row.Time_to_learn),
+Category :row.Category,
+    Date_update: datetime()
+})
+----------------
+LOAD CSV WITH HEADERS FROM 'file:///Level_Entity.csv' AS row
+CREATE (l:CEFR_Level {
+    Level_ID:row.Level_ID,
+    CEFR_Level: row.CERF_Level,
+    From_Score_equivalent:toInteger(row.From_Score_equivalent),
+    To_Score_equivalent:toInteger(row.To_Score_equivalent),
+   Certificate: row.Certificate,
+    Date_update: datetime()
+})
+----------------------
+LOAD CSV WITH HEADERS FROM 'file:///NEED_LEARN_PRE_LESSON1.csv' AS row
+MATCH (l:Listening_Skill{Lesson_ID: row.Lesson_ID})
+MATCH (l1:Vocabulary{Lesson_ID: row.Pre_Lesson_ID})
+CREATE (l)-[:NEED_LEARN_PRE_LESSON_L{Date_update:datetime()}]->(l1)
+----------------------
+LOAD CSV WITH HEADERS FROM 'file:///HAS_PRE_LEVEL.csv' AS row
+MATCH (l:CEFR_Level{Level_ID: row.Level_ID})
+MATCH (l1:CEFR_Level{Level_ID: row.PRE_LEVEL_ID})
+CREATE (l)-[:HAS_PRE_LEVEL{Date_update:datetime()}]->(l1)
+----------------------
+LOAD CSV WITH HEADERS FROM 'file:///NEED_LEARN_PRE_LESSON2.csv' AS row
+MATCH (l:Reading_Skill{Lesson_ID: row.Lesson_ID})
+MATCH (l1:Vocabulary{Lesson_ID: row.Pre_Lesson_ID})
+CREATE (l)-[:NEED_LEARN_PRE_LESSON_R{Date_update:datetime()}]->(l1)
+----------------------
+LOAD CSV WITH HEADERS FROM 'file:///NEED_LEARN_PRE_LESSON3.csv' AS row
+MATCH (l:Speaking_Skill{Lesson_ID: row.Lesson_ID})
+MATCH (l1:Vocabulary{Lesson_ID: row.Pre_Lesson_ID})
+CREATE (l)-[:NEED_LEARN_PRE_LESSON_S{Date_update:datetime()}]->(l1)
+----------------------
+LOAD CSV WITH HEADERS FROM 'file:///NEED_LEARN_PRE_LESSON_4.csv' AS row
+MATCH (l:Writing_Skill{Lesson_ID: row.Lesson_ID})
+MATCH (l1:Vocabulary{Lesson_ID: row.Pre_Lesson_ID})
+CREATE (l)-[:NEED_LEARN_PRE_LESSON_W{Date_update:datetime()}]->(l1)
+----------------------
+LOAD CSV WITH HEADERS FROM 'file:///NEED_LEARN_PRONUNCIATION.csv' AS row
+MATCH (l:Speaking_Skill{Lesson_ID: row.Lesson_ID})
+MATCH (l1:Pronunciation{Lesson_ID: row.Pre_Lesson_ID})
+CREATE (l)-[:NEED_LEARN_PRONUNCIATION{Date_update:datetime()}]->(l1)
+------------------------
+LOAD CSV WITH HEADERS FROM 'file:///NEED_COMPETENCY.csv' AS row
+MATCH (l:CEFR_Level{Level_ID: row.Level_ID})
+MATCH (l1:Competency{Competency_id: row.Competency_ID})
+CREATE (l)-[:NEED_COMPETENCY{Date_update:datetime()}]->(l1)
+-------------------------
+LOAD CSV WITH HEADERS FROM 'file:///NEED_LEARN_LISTEN_SKILL_LESSON.csv' AS row
+MATCH (l:Competency{Competency_id: row.Competency_ID})
+MATCH (l1:Listening_Skill{Lesson_ID: row.Lesson_ID})
+CREATE (l)-[:NEED_LEARN_LISTEN_SKILL_LESSON{Date_update:datetime()}]->(l1)
+-----------------------
+LOAD CSV WITH HEADERS FROM 'file:///NEED_LEARN_READING_SKILL_LESSON.csv' AS row
+MATCH (l:Competency{Competency_id: row.Competency_ID})
+MATCH (l1:Reading_Skill{Lesson_ID: row.Lesson_ID})
+CREATE (l)-[:NEED_LEARN_READING_SKILL_LESSON{Date_update:datetime()}]->(l1)
+---------------
+LOAD CSV WITH HEADERS FROM 'file:///NEED_LEARN_SPEAKING_SKILL_LESSON.csv' AS row
+MATCH (l:Competency{Competency_id: row.Competency_ID})
+MATCH (l1:Speaking_Skill{Lesson_ID: row.Lesson_ID})
+CREATE (l)-[:NEED_LEARN_SPEAKING_SKILL_LESSON{Date_update:datetime()}]->(l1)
+---------------
+LOAD CSV WITH HEADERS FROM 'file:///NEED_LEARN_WRITING_SKILL_LESSON.csv' AS row
+MATCH (l:Competency{Competency_id: row.Competency_ID})
+MATCH (l1:Writing_Skill{Lesson_ID: row.Lesson_ID})
+CREATE (l)-[:NEED_LEARN_WRITING_SKILL_LESSON{Date_update:datetime()}]->(l1)
+------------------
+LOAD CSV WITH HEADERS FROM 'file:///NEED_LEARN_GRAMMAR_LESSON.csv' AS row
+MATCH (l:Competency{Competency_id: row.Competency_ID})
+MATCH (l1:Grammar{Lesson_ID: row.Lesson_ID})
+CREATE (l)-[:NEED_LEARN_GRAMMAR_LESSON{Date_update:datetime()}]->(l1)
+=======================
+LOAD CSV WITH HEADERS FROM 'file:///LN_LO_HAD.csv' AS row
+MATCH (l:Learner{Learner_id: row.Learner_id})
+MATCH (l1:Competency{Competency_id: row.Competency_id})
+CREATE (l)-[:HAD_COMPETENCY{Date_update:datetime(),Weight:toInteger(row.Weighted)}]->(l1)
+
+LOAD CSV WITH HEADERS FROM 'file:///LN_LS_GRAMMAR_KNOWN.csv' AS row
+MATCH (l:Learner{Learner_id: row.Learner_id})
+MATCH (l1:Grammar{Lesson_ID: row.Lesson_id})
+CREATE (l)-[:KNOWN_LESSON_GRAMMAR{Date_update:datetime(),Weight:toInteger(row.Weighted)}]->(l1)
+
+LOAD CSV WITH HEADERS FROM 'file:///LN_LS_LISTENING_KNOWN.csv' AS row
+MATCH (l:Learner{Learner_id: row.Learner_id})
+MATCH (l1:Listening_Skill{Lesson_ID: row.Lesson_id})
+CREATE (l)-[:KNOWN_LESSON_LISTEN{Date_update:datetime(),Weight:toInteger(row.Weighted)}]->(l1)
+
+LOAD CSV WITH HEADERS FROM 'file:///LN_LS_READING_KNOWN.csv' AS row
+MATCH (l:Learner{Learner_id: row.Learner_id})
+MATCH (l1:Reading_Skill{Lesson_ID: row.Lesson_id})
+CREATE (l)-[:KNOWN_LESSON_READING{Date_update:datetime(),Weight:toInteger(row.Weighted)}]->(l1)
+
+LOAD CSV WITH HEADERS FROM 'file:///LN_LS_SPEAKING_KNOWN.csv' AS row
+MATCH (l:Learner{Learner_id: row.Learner_id})
+MATCH (l1:Speaking_Skill{Lesson_ID: row.Lesson_id})
+CREATE (l)-[:KNOWN_LESSON_SPEAKING{Date_update:datetime(),Weight:toInteger(row.Weighted)}]->(l1)
+
+LOAD CSV WITH HEADERS FROM 'file:///LN_LS_WRITING_KNOWN.csv' AS row
+MATCH (l:Learner{Learner_id: row.Learner_id})
+MATCH (l1:Writing_Skill{Lesson_ID: row.Lesson_id})
+CREATE (l)-[:KNOWN_LESSON_WRITING{Date_update:datetime(),Weight:toInteger(row.Weighted)}]->(l1)
+
+=======================
+-----------------
+----Bỏ qua
+LOAD CSV WITH HEADERS FROM 'file:///NEED_LEARN_LESSON.csv' AS row
+MATCH (l:Competency{Competency_id: row.Competency_ID})
+MATCH (l1:Lesson{Lesson_ID: row.Lesson_ID})
+CREATE (l)-[:NEED_LEARN_LESSON{Date_update:datetime()}]->(l1)
+==================
+MATCH(l:Learner{Learner_id:"L_01"})
+OPTIONAL MATCH (l)-[a12:HAS_CURRENT_LEVEL]->(c1:Current_Level)
+OPTIONAL MATCH (l)-[a13:WANT_TARGET_LEVEL]->(t1:Target_Level)
+OPTIONAL MATCH (c1)-[a14:BELONG_TO]->(c2:CEFR_Level)
+OPTIONAL MATCH (t1)-[a15:BELONGS_TO]->(c3:CEFR_Level)
+
+OPTIONAL MATCH (c2)-[a16:NEED_COMPETENCY]->(c4:Competency)
+optional match (c4)-[a17:NEED_LEARN_LISTEN_SKILL_LESSON]->(l11:Listening_Skill)
+optional match (c4)-[a18:NEED_LEARN_READING_SKILL_LESSON]->(l12:Reading_Skill)
+optional match (c4)-[a19:NEED_LEARN_WRITING_SKILL_LESSON]->(l13:Writing_Skill)
+optional match (c4)-[a20:NEED_LEARN_SPEAKING_SKILL_LESSON]->(l14:Speaking_Skill)
+optional match (c4)-[a21:NEED_LEARN_GRAMMAR_LESSON]->(l15:Grammar)
+OPTIONAL MATCH (l11)-[a22:NEED_LEARN_PRE_LESSON_L]->(l16:Vocabulary)
+OPTIONAL MATCH (l12)-[a23:NEED_LEARN_PRE_LESSON_R]->(l17:Vocabulary)
+OPTIONAL MATCH (l14)-[a24:NEED_LEARN_PRE_LESSON_S]->(l18:Vocabulary)
+OPTIONAL MATCH (l13)-[a25:NEED_LEARN_PRE_LESSON_W]->(l19:Vocabulary)
+OPTIONAL MATCH (l14)-[a26:NEED_LEARN_PRONUNCIATION]->(l20:Pronunciation)
+
+
+
+
+OPTIONAL MATCH (c3)-[a1:NEED_COMPETENCY]->(c:Competency)
+optional match (c)-[a2:NEED_LEARN_LISTEN_SKILL_LESSON]->(l1:Listening_Skill)
+optional match (c)-[a3:NEED_LEARN_READING_SKILL_LESSON]->(l2:Reading_Skill)
+optional match (c)-[a4:NEED_LEARN_WRITING_SKILL_LESSON]->(l3:Writing_Skill)
+optional match (c)-[a5:NEED_LEARN_SPEAKING_SKILL_LESSON]->(l4:Speaking_Skill)
+optional match (c)-[a6:NEED_LEARN_GRAMMAR_LESSON]->(l5:Grammar)
+OPTIONAL MATCH (l1)-[a7:NEED_LEARN_PRE_LESSON_L]->(l6:Vocabulary)
+OPTIONAL MATCH (l2)-[a8:NEED_LEARN_PRE_LESSON_R]->(l7:Vocabulary)
+OPTIONAL MATCH (l4)-[a9:NEED_LEARN_PRE_LESSON_S]->(l8:Vocabulary)
+OPTIONAL MATCH (l3)-[a10:NEED_LEARN_PRE_LESSON_W]->(l9:Vocabulary)
+OPTIONAL MATCH (l4)-[a11:NEED_LEARN_PRONUNCIATION]->(l10:Pronunciation)
+
+return l ,c1,c2,c3,t1,c,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,c4,l11,l12,l13,l14,l15,l16,l17,l18,l19,l20,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26
